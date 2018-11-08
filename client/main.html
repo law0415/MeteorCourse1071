@@ -2,12 +2,22 @@
   <!-- This is the title of my app -->
   <title>My Chatbot</title>
 </head>
+
 <body>
   <center>
-    {{> mainSection}}
-    {{> formSection}}
+    {{#if checkCurrentPage "frontPage"}}
+      {{> frontPage}}
+    {{else}}
+      {{> mainSection}}
+      {{> formSection}}
+    {{/if}}
   </center>
 </body>
+
+<template name = "frontPage">
+  <h1>Welcome!</h1>
+  <input type = "button" id = "enterMain" value = "Enter" />
+</template>
 
 <template name = "mainSection">
   <h1>
@@ -19,7 +29,7 @@
 <template name = "formSection">
   <form>
     <input type = "text" id = "myMsg" size = "80" placeholder = "Please enter your message here..." /><br/>
-    <input type = "submit" class = "buttons" id = "submitMsg" value = "Submit" />
-    <input type = "reset" class = "buttons" id = "resetMsg" value = "Reset" />
+    <input type = "submit" id = "submitMsg" class = "buttons" value = "Submit" />
+    <input type = "reset" id = "resetMsg" class = "buttons" value = "Reset" />
   </form>
 </template>
